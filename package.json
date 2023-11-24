@@ -1,0 +1,53 @@
+{
+  "name": "yocoding",
+  "version": "1.0.1",
+  "description": "Yocoding GUI",
+  "scripts": {
+    "debug": "electron ./debug/start.js",
+    "start": "electron ./index.js",
+    "build-win": "electron-builder --win",
+    "build-mac": "electron-builder --mac",
+    "elec-i": "cross-env ELECTRON_MIRROR=https://cdn.npm.taobao.org/dist/electron/ npm install electron -S"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "console-color-mr": "2.0.1",
+    "cross-env": "^7.0.2",
+    "electron": "^10.4.7",
+    "electron-builder": "22.9.1",
+    "electron-rebuild": "^2.3.4",
+    "javascript-obfuscator": "2.6.3"
+  },
+  "build": {
+    "productName": "Yocoding",
+    "appId": "kujiajia.club",
+    "copyright": "Copyright © 2021 Code++",
+    "asar": false,
+    "directories": {
+      "output": "build"
+    },
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    },
+    "mac": {
+      "icon": "assets/icon.icns",
+      "artifactName": "${productName}_setup_${version}.${ext}"
+    },
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  }
+}
